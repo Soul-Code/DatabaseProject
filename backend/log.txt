@@ -1,0 +1,36 @@
+ * Serving Flask app "app.py" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 221-606-559
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+None
+127.0.0.1 - - [27/Feb/2019 14:24:38] "POST /api/get_courses HTTP/1.1" 200 -
+{'ok': True, 'courses': [('PASCAL', 'C1'), ('数据结构', 'C2'), ('离散数学', 'C3'), ('计算机原理', 'C4'), ('数据库原理', 'C5'), ('Windows技术', 'C6'), ('编译原理', 'C8'), ('系统结构', 'C9')]}
+None
+<SecureCookieSession {}>
+(('S1', '李铭', '男', '19', '计算机软件', 'liming', 'admin'), ('S2', '刘晓鸣', '男', '20', '计算机应用', 'liuxiaoming', 'admin'), ('S3', '李明', '男', '22', '计算机应用', 'liming1', 'admin'), ('S4', '张鹰', '女', '21', '计算机软件', 'zhangying', 'admin'), ('S5', '刘竟静', '女', '22', '计算机软件', 'liujingjing', 'admin'), ('S6', '刘成刚', '男', '21', '计算机软件', 'liuchenggang', 'admin'), ('S7', '王铭', '男', '22', '计算机应用', 'wangming', 'admin'), ('S8', '宣明尼', '女', '18', '计算机应用', 'xuanmingni', 'admin'), ('S9', '柳红利', '女', '19', '计算机软件', 'liuhongli', 'admin'))
+127.0.0.1 - - [27/Feb/2019 14:24:39] "POST /api/sdata HTTP/1.1" 200 -
+None
+{'ok': True, 'courses': [('PASCAL', 'C1'), ('数据结构', 'C2'), ('离散数学', 'C3'), ('计算机原理', 'C4'), ('数据库原理', 'C5'), ('Windows技术', 'C6'), ('编译原理', 'C8'), ('系统结构', 'C9')]}
+127.0.0.1 - - [27/Feb/2019 14:30:31] "POST /api/get_courses HTTP/1.1" 200 -
+None
+127.0.0.1 - - [27/Feb/2019 14:30:38] "POST /api/get_courses HTTP/1.1" 200 -
+{'ok': True, 'courses': [('PASCAL', 'C1'), ('数据结构', 'C2'), ('离散数学', 'C3'), ('计算机原理', 'C4'), ('数据库原理', 'C5'), ('Windows技术', 'C6'), ('编译原理', 'C8'), ('系统结构', 'C9')]}
+None
+<SecureCookieSession {}>
+127.0.0.1 - - [27/Feb/2019 14:30:42] "POST /api/sdata HTTP/1.1" 200 -
+(('S1', '李铭', '男', '19', '计算机软件', 'liming', 'admin'), ('S2', '刘晓鸣', '男', '20', '计算机应用', 'liuxiaoming', 'admin'), ('S3', '李明', '男', '22', '计算机应用', 'liming1', 'admin'), ('S4', '张鹰', '女', '21', '计算机软件', 'zhangying', 'admin'), ('S5', '刘竟静', '女', '22', '计算机软件', 'liujingjing', 'admin'), ('S6', '刘成刚', '男', '21', '计算机软件', 'liuchenggang', 'admin'), ('S7', '王铭', '男', '22', '计算机应用', 'wangming', 'admin'), ('S8', '宣明尼', '女', '18', '计算机应用', 'xuanmingni', 'admin'), ('S9', '柳红利', '女', '19', '计算机软件', 'liuhongli', 'admin'))
+127.0.0.1 - - [27/Feb/2019 14:38:03] "OPTIONS /api/get_score HTTP/1.1" 200 -
+{'cno': 'C1'}
+127.0.0.1 - - [27/Feb/2019 14:38:03] "POST /api/get_score HTTP/1.1" 200 -
+{'ok': True, 'students': [('李明', 87, 'S3'), ('张鹰', 67, 'S4'), ('刘竟静', 67, 'S5'), ('刘成刚', 78, 'S6')]}
+None
+<SecureCookieSession {}>
+127.0.0.1 - - [27/Feb/2019 14:38:05] "POST /api/sdata HTTP/1.1" 200 -
+(('S1', '李铭', '男', '19', '计算机软件', 'liming', 'admin'), ('S2', '刘晓鸣', '男', '20', '计算机应用', 'liuxiaoming', 'admin'), ('S3', '李明', '男', '22', '计算机应用', 'liming1', 'admin'), ('S4', '张鹰', '女', '21', '计算机软件', 'zhangying', 'admin'), ('S5', '刘竟静', '女', '22', '计算机软件', 'liujingjing', 'admin'), ('S6', '刘成刚', '男', '21', '计算机软件', 'liuchenggang', 'admin'), ('S7', '王铭', '男', '22', '计算机应用', 'wangming', 'admin'), ('S8', '宣明尼', '女', '18', '计算机应用', 'xuanmingni', 'admin'), ('S9', '柳红利', '女', '19', '计算机软件', 'liuhongli', 'admin'))
+None
+<SecureCookieSession {}>
+(('S1', '李铭', '男', '19', '计算机软件', 'liming', 'admin'), ('S2', '刘晓鸣', '男', '20', '计算机应用', 'liuxiaoming', 'admin'), ('S3', '李明', '男', '22', '计算机应用', 'liming1', 'admin'), ('S4', '张鹰', '女', '21', '计算机软件', 'zhangying', 'admin'), ('S5', '刘竟静', '女', '22', '计算机软件', 'liujingjing', 'admin'), ('S6', '刘成刚', '男', '21', '计算机软件', 'liuchenggang', 'admin'), ('S7', '王铭', '男', '22', '计算机应用', 'wangming', 'admin'), ('S8', '宣明尼', '女', '18', '计算机应用', 'xuanmingni', 'admin'), ('S9', '柳红利', '女', '19', '计算机软件', 'liuhongli', 'admin'))
+127.0.0.1 - - [27/Feb/2019 14:38:07] "POST /api/sdata HTTP/1.1" 200 -
