@@ -19,18 +19,15 @@ db = pymysql.connect(
     port=3306,
     database="course_selection_system"
 )
-# # 新建游标
-# cursor = db.cursor()
-# # 使用 execute()  方法执行 SQL 查询
-# cursor.execute("SELECT VERSION()")
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 app.config.from_object(Config)
 
-
-# app.config['SECRET_KEY'] = os.urandom(24)
-# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
+# 设置秘钥，用于……不知道用来干嘛……
+app.config['SECRET_KEY'] = os.urandom(24)
+# 设置session过期时间
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 
 # 建立数据库关系,使用SQLAlchemy
@@ -57,6 +54,10 @@ def hello_world():
 
 @app.route('/api/login', methods=['POST'])
 def login():
+    """
+    登陆，将学生编号存入session
+    :return:
+    """
     cursor = db.cursor()
     request_data = request.json
     print(request_data)
@@ -91,11 +92,20 @@ def login():
 
 @app.route('/var/<varname>')
 def var(varname):
+    """
+    测试使用，别管它
+    :param varname:
+    :return:
+    """
     return 'Var:  %s' % varname
 
 
 @app.route('/api/logout', methods=['POST'])
 def logout():
+    """
+    退出登陆
+    :return:
+    """
     session.clear()
     response = {'ok': True}
     return json.dumps(response)
@@ -103,6 +113,10 @@ def logout():
 
 @app.route('/api/sdata', methods=['POST'])
 def get_student_data():
+    """
+    获取指定学生的个人信息，用于个人信息的展示
+    :return:
+    """
     request_data = request.json  # request是从服务器返回的数据，后面加.json是将数据转化为python的字典，方便使用
     print(request_data)
     cursor = db.cursor()  # 新建一个数据库游标
@@ -119,6 +133,10 @@ def get_student_data():
 
 @app.route('/api/get_students', methods=['POST'])
 def get_students():
+    """
+    获取全部学生的列表，用于学生表的维护
+    :return:
+    """
     request_data = request.json
     print(request_data)
     cursor = db.cursor()
@@ -135,6 +153,10 @@ def get_students():
 # 教师端
 @app.route('/api/get_courses', methods=['POST'])
 def get_courses():
+    """
+    获取全部课程的列表
+    :return:
+    """
     request_data = request.json
     print(request_data)
     cursor = db.cursor()
@@ -148,6 +170,10 @@ def get_courses():
 
 @app.route('/api/get_score', methods=['POST'])
 def get_score():
+    """
+    从服务器获取成绩信息
+    :return:
+    """
     request_data = request.json
     print(request_data)
     cursor = db.cursor()
@@ -161,6 +187,10 @@ def get_score():
 
 @app.route('/api/save_score', methods=['POST'])
 def save_score():
+    """
+    将改动过的成绩信息存入数据库
+    :return:
+    """
     request_data = request.json
     datas = request_data['datas']
     cno = request_data['cno']
