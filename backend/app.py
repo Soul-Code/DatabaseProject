@@ -161,9 +161,9 @@ def get_courses():
     print(request_data)
     cursor = db.cursor()
     response = {'ok': True}
-    sql = 'SELECT CNAME,CNO FROM c'
+    sql = 'SELECT * FROM c'
     cursor.execute(sql)
-    response['courses'] = [i for i in cursor.fetchall()]
+    response['courses'] = cursor.fetchall()
     print(response)
     return json.dumps(response)
 
@@ -171,7 +171,7 @@ def get_courses():
 @app.route('/api/get_score', methods=['POST'])
 def get_score():
     """
-    从服务器获取成绩信息
+    从服务器获取指定课程的所有学生的成绩信息
     :return:
     """
     request_data = request.json

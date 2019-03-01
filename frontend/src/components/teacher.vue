@@ -60,7 +60,7 @@
           <el-button class="btm-btn" type="success">保存</el-button>
           <el-button class="btm-btn" type="primary">修改</el-button>
           <el-table :data="studentData" stripe style="width:100%">
-            <el-table-column prop="sno" label="学号"></el-table-column>
+            <el-table-column prop="sno" label="学号" width="60"></el-table-column>
             <el-table-column prop="sname" label="姓名"></el-table-column>
             <el-table-column prop="sex" label="性别"></el-table-column>
             <el-table-column prop="age" label="年龄"></el-table-column>
@@ -69,7 +69,17 @@
             <el-table-column prop="pswd" label="密码"></el-table-column>
           </el-table>
         </el-tab-pane>
-        <el-tab-pane label="课程表维护">课程表维护</el-tab-pane>
+        <el-tab-pane label="课程表维护">
+          <el-button class="btm-btn" type="success">保存</el-button>
+          <el-button class="btm-btn" type="primary">修改</el-button>
+          <el-table :data="courseData" stripe style="width:100%">
+            <el-table-column prop="cno" label="课号" width="60"></el-table-column>
+            <el-table-column prop="cname" label="课名"></el-table-column>
+            <el-table-column prop="credit" label="学分"></el-table-column>
+            <el-table-column prop="cdept" label="系别"></el-table-column>
+            <el-table-column prop="tname" label="教师名"></el-table-column>
+          </el-table>
+        </el-tab-pane>
       </el-tabs>
     </el-main>
   </el-container>
@@ -97,21 +107,36 @@ export default {
       ],
       haschenged: false,
       scoreData: [],
-      studentData: []
+      studentData: [],
+      courseData: []
     };
   },
   mounted() {
+    // 这个函数在页面加载完成后首先执行
+    // 下面这个代码是在服务器获取全部的课程信息存入变量来初始化课程选择框
     this.$axios
       .post(this.$url + "get_courses")
       .then(res => {
+        // 获取到后端数据
         console.log(res);
+        // 初始化一个数组变量。用来初始化选择框。
         var options = new Array(res.data.courses.length);
+        var courseData = new Array(res.data.courses.length);
+        // 循环给这个变量赋值
         for (let index = 0; index < res.data.courses.length; index++) {
           const element = res.data.courses[index];
           // console.log(element);
-          options[index] = { label: element[0], value: element[1] };
+          options[index] = { label: element[1], value: element[0] };
+          courseData[index] = {
+            cno: element[0],
+            cname: element[1],
+            credit: element[2],
+            cdept: element[3],
+            tname: element[4]
+          };
         }
         this.options = options;
+        this.courseData = courseData;
       })
       .catch(err => {
         console.log(err);
