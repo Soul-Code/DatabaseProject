@@ -103,23 +103,32 @@ def logout():
 
 @app.route('/api/sdata', methods=['POST'])
 def get_student_data():
+    request_data = request.json  # request是从服务器返回的数据，后面加.json是将数据转化为python的字典，方便使用
+    print(request_data)
+    cursor = db.cursor()  # 新建一个数据库游标
+    response = {'ok': True}  # response是返回给服务器的数据，也是字典格式
+    print(session)  # session是会话，服务器端的全局变量，每个用户对应一个session
+    if session.get('user', False):  # 看一下session里面有没有学号（登陆的时候会把学号存进去
+        sql = "SELECT * FROM s WHERE SNO='%s'" % session['user']  # 构造sql语句
+        cursor.execute(sql)  # 执行sql语句
+        s = cursor.fetchall()  # 获取sql执行结果
+        print(s)
+        response['info'] = s  # 把结果保存在response里面
+    return json.dumps(response)  # 将response从字典格式转化为json格式反馈给前端
+
+
+@app.route('/api/get_students', methods=['POST'])
+def get_students():
     request_data = request.json
     print(request_data)
     cursor = db.cursor()
     response = {'ok': True}
     print(session)
-    if session.get('user', False):
-        sql = "SELECT * FROM s WHERE SNO='%s'" % session['user']
-        cursor.execute(sql)
-        s = cursor.fetchall()
-        print(s)
-        response['info'] = s
-    else:
-        sql = "SELECT * FROM s"
-        cursor.execute(sql)
-        s = cursor.fetchall()
-        print(s)
-        response['info'] = s
+    sql = "SELECT * FROM s"
+    cursor.execute(sql)
+    s = cursor.fetchall()
+    print(s)
+    response['info'] = s
     return json.dumps(response)
 
 

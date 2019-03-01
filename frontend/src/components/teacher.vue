@@ -172,7 +172,7 @@ export default {
     form(newValue, oldValue) {
       if (newValue == "4") {
         this.$axios
-          .post(this.$url + "sdata")
+          .post(this.$url + "get_students")
           .then(res => {
             var studentData = Array(res.data.info.length);
             for (let i = 0; i < res.data.info.length; i++) {
