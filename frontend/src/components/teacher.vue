@@ -60,24 +60,30 @@
           <el-button class="btm-btn" type="success">保存</el-button>
           <el-button class="btm-btn" type="primary">修改</el-button>
           <el-table :data="studentData" stripe style="width:100%">
-            <el-table-column prop="sno" label="学号" width="60"></el-table-column>
+            <el-table-column v-for="item in student_index" :key="item[0]" :prop="item[0]" :label="item[1]">
+              
+            </el-table-column>
+            <!-- <el-table-column prop="sno" label="学号" width="60"></el-table-column>
             <el-table-column prop="sname" label="姓名"></el-table-column>
             <el-table-column prop="sex" label="性别"></el-table-column>
             <el-table-column prop="age" label="年龄"></el-table-column>
             <el-table-column prop="sdept" label="专业"></el-table-column>
             <el-table-column prop="logn" label="用户名"></el-table-column>
-            <el-table-column prop="pswd" label="密码"></el-table-column>
+            <el-table-column prop="pswd" label="密码"></el-table-column> -->
           </el-table>
         </el-tab-pane>
         <el-tab-pane label="课程表维护">
           <el-button class="btm-btn" type="success">保存</el-button>
           <el-button class="btm-btn" type="primary">修改</el-button>
           <el-table :data="courseData" stripe style="width:100%">
-            <el-table-column prop="cno" label="课号" width="60"></el-table-column>
+            <el-table-column v-for="item in course_index" :key="item[0]" :prop="item[0]" :label="item[1]">
+
+            </el-table-column>
+            <!-- <el-table-column prop="cno" label="课号" width="60"></el-table-column>
             <el-table-column prop="cname" label="课名"></el-table-column>
             <el-table-column prop="credit" label="学分"></el-table-column>
             <el-table-column prop="cdept" label="系别"></el-table-column>
-            <el-table-column prop="tname" label="教师名"></el-table-column>
+            <el-table-column prop="tname" label="教师名"></el-table-column> -->
           </el-table>
         </el-tab-pane>
       </el-tabs>
@@ -89,6 +95,22 @@
 export default {
   data() {
     return {
+      student_index: [
+        ["sno", "学号"],
+        ["sname", "姓名"],
+        ["sex", "性别"],
+        ["age", "年龄"],
+        ["sdept", "专业"],
+        ["logn", "用户名"],
+        ["pswd", "密码"]
+      ],
+      course_index: [
+        ["cno", "课号"],
+        ["cname", "课名"],
+        ["credit", "学分"],
+        ["cdept", "系别"],
+        ["tname", "教师名"]
+      ],
       form: "1",
       course: [],
       options: [
@@ -148,9 +170,11 @@ export default {
       this.form = index;
     },
     handleCourseChange(val) {
+
       this.$axios
         .post(this.$url + "get_score", { cno: val })
         .then(res => {
+
           var students = res.data.students;
           var scoreData = Array(students.length);
           // console.log(students);
@@ -164,6 +188,7 @@ export default {
           }
           this.scoreData = scoreData;
           this.haschenged = false;
+          
         })
         .catch(err => {
           console.log(err);

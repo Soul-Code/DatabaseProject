@@ -111,6 +111,28 @@ def logout():
     return json.dumps(response)
 
 
+# 学生端=====================================================
+
+@app.route('/api/get_selected_courses', methods=['POST'])
+def get_selected_courses():
+    """
+    这个函数就是获取到某个学生的可选课程
+    :return:
+    """
+    request_data = request.json
+    response = {'ok': True}
+    cursor = db.cursor()
+    if session.get('user'):
+        sql = 'select * from c where c.CNO not in (select sc.CNO from sc where sc.SNO="%s")' % session.get('user')
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        print(data)
+        response['selected_courses'] = data
+    else:
+        response['ok'] = False
+    return json.dumps(response)
+
+
 @app.route('/api/sdata', methods=['POST'])
 def get_student_data():
     """
@@ -131,6 +153,7 @@ def get_student_data():
     return json.dumps(response)  # 将response从字典格式转化为json格式反馈给前端
 
 
+# 教师端=====================================================
 @app.route('/api/get_students', methods=['POST'])
 def get_students():
     """
@@ -150,7 +173,6 @@ def get_students():
     return json.dumps(response)
 
 
-# 教师端
 @app.route('/api/get_courses', methods=['POST'])
 def get_courses():
     """
