@@ -57,11 +57,19 @@
       </div>
       <el-tabs type="border-card" v-if="form==='4'" v-on:show="student_show">
         <el-tab-pane label="学生表维护">
-          <el-button class="btm-btn" type="success">保存</el-button>
-          <el-button class="btm-btn" type="primary">修改</el-button>
+          <el-button class="btm-btn" type="success" @click="save('student')">保存</el-button>
+          <el-button class="btm-btn" type="primary" @click="editable">修改</el-button>
           <el-table :data="studentData" stripe style="width:100%">
-            <el-table-column v-for="item in student_index" :key="item[0]" :prop="item[0]" :label="item[1]">
-              
+            <el-table-column
+              v-for="item in student_index"
+              :key="item[0]"
+              :prop="item[0]"
+              :label="item[1]"
+            >
+              <template slot-scope="scope">
+                <el-input v-model="scope.row[item[0]]" v-if="edit" type="text"></el-input>
+                <span v-else>{{scope.row[item[0]]}}</span>
+              </template>
             </el-table-column>
             <!-- <el-table-column prop="sno" label="学号" width="60"></el-table-column>
             <el-table-column prop="sname" label="姓名"></el-table-column>
@@ -69,21 +77,29 @@
             <el-table-column prop="age" label="年龄"></el-table-column>
             <el-table-column prop="sdept" label="专业"></el-table-column>
             <el-table-column prop="logn" label="用户名"></el-table-column>
-            <el-table-column prop="pswd" label="密码"></el-table-column> -->
+            <el-table-column prop="pswd" label="密码"></el-table-column>-->
           </el-table>
         </el-tab-pane>
         <el-tab-pane label="课程表维护">
-          <el-button class="btm-btn" type="success">保存</el-button>
-          <el-button class="btm-btn" type="primary">修改</el-button>
+          <el-button class="btm-btn" type="success" @click="save('courses')">保存</el-button>
+          <el-button class="btm-btn" type="primary" @click="editable">修改</el-button>
           <el-table :data="courseData" stripe style="width:100%">
-            <el-table-column v-for="item in course_index" :key="item[0]" :prop="item[0]" :label="item[1]">
-
+            <el-table-column
+              v-for="item in course_index"
+              :key="item[0]"
+              :prop="item[0]"
+              :label="item[1]"
+            >
+              <template slot-scope="scope">
+                <el-input v-model="scope.row[item[0]]" v-if="edit" type="text"></el-input>
+                <span v-else>{{scope.row[item[0]]}}</span>
+              </template>
             </el-table-column>
             <!-- <el-table-column prop="cno" label="课号" width="60"></el-table-column>
             <el-table-column prop="cname" label="课名"></el-table-column>
             <el-table-column prop="credit" label="学分"></el-table-column>
             <el-table-column prop="cdept" label="系别"></el-table-column>
-            <el-table-column prop="tname" label="教师名"></el-table-column> -->
+            <el-table-column prop="tname" label="教师名"></el-table-column>-->
           </el-table>
         </el-tab-pane>
       </el-tabs>
@@ -130,7 +146,8 @@ export default {
       haschenged: false,
       scoreData: [],
       studentData: [],
-      courseData: []
+      courseData: [],
+      edit: false
     };
   },
   mounted() {
@@ -166,15 +183,17 @@ export default {
   },
   computed: {},
   methods: {
+    editable() {
+      this.edit = !this.edit;
+      console.log(this.edit);
+    },
     handleSelect(index) {
       this.form = index;
     },
     handleCourseChange(val) {
-
       this.$axios
         .post(this.$url + "get_score", { cno: val })
         .then(res => {
-
           var students = res.data.students;
           var scoreData = Array(students.length);
           // console.log(students);
@@ -188,7 +207,6 @@ export default {
           }
           this.scoreData = scoreData;
           this.haschenged = false;
-          
         })
         .catch(err => {
           console.log(err);
@@ -213,6 +231,20 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    save(what) {
+      switch (what) {
+        case "student":
+          break;
+        case "courses":
+          break;
+      }
+      this.$axios
+        .post(this.$url + "save", { what: what })
+        .then(res=>{
+          // todo 
+        })
+        .catch();
     },
     student_show() {
       console.log("显示了学生维护界面");

@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8143973a-344b-4946-a51c-bee56543ecfb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/student.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/student.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/teacher.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/teacher.vue" afterDir="false" />
-    </list>
+    <list default="true" id="8143973a-344b-4946-a51c-bee56543ecfb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +118,7 @@
     <session id="661395588">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -162,8 +156,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="117" column="7" lean-forward="true" selection-start-line="115" selection-end-line="132" selection-end-column="31" />
+            <state relative-caret-position="-2091">
+              <caret line="129" column="43" lean-forward="true" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <marker date="1551712079024" expanded="true" signature="2725:3154" ph="..." />
@@ -236,9 +230,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="805" />
-    <option name="y" value="34" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="421" />
+    <option name="y" value="43" />
     <option name="width" value="1140" />
     <option name="height" value="880" />
   </component>
@@ -359,7 +353,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="421" y="43" width="1140" height="880" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.13672923" />
@@ -367,7 +361,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49787235" visible="true" weight="0.2942454" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49787235" weight="0.3637584" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -383,7 +377,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32962963" />
-      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.27878466" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.48425925" />
       <window_info anchor="right" id="SciView" order="5" weight="0.32945737" />
     </layout>
     <layout-to-restore>
@@ -485,8 +479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="117" column="7" lean-forward="true" selection-start-line="115" selection-end-line="132" selection-end-column="31" />
+        <state relative-caret-position="-2091">
+          <caret line="129" column="43" lean-forward="true" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <marker date="1551712079024" expanded="true" signature="2725:3154" ph="..." />
