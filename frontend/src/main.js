@@ -3,13 +3,19 @@
 import Vue from "vue";
 import App from "./App";
 import router from "./router";
+
 import axios from "axios";
 axios.defaults.withCredentials=true;
 Vue.prototype.$axios = axios;
+
+
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-
 Vue.use(ElementUI, { size: "large", zIndex: 3000 });
+
+import ECharts from 'vue-echarts/components/ECharts'
+import 'echarts/lib/chart/line'
+Vue.component('chart', ECharts)
 
 Vue.config.productionTip = false;
 

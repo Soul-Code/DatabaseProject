@@ -67,21 +67,28 @@ def login():
     login = False
     response = {'ok': False}
     user = None
-    for row in students:
-        print(row)
-        if row[0] == request_data['username']:
-            print('用户名正确')
-            if row[1] == request_data['psword']:
-                print('密码正确')
-                user = row
-                login = True
-                response['ok'] = True
-                response['role'] = 'student'
-                session.permanent = True
-                session['role'] = 'student'
-                session['user'] = user[3]
-                print(session)
-                break
+    if request_data['username'] == 'teacher' and request_data['psword'] == 'admin':
+        print('教师登陆')
+        response['role'] = 'teacher'
+        response['ok'] = True
+        session['role'] = 'teacher'
+        return json.dumps(response)
+    else:
+        for row in students:
+            print(row)
+            if row[0] == request_data['username']:
+                print('用户名正确')
+                if row[1] == request_data['psword']:
+                    print('密码正确')
+                    user = row
+                    login = True
+                    response['ok'] = True
+                    response['role'] = 'student'
+                    session.permanent = True
+                    session['role'] = 'student'
+                    session['user'] = user[3]
+                    print(session)
+                    break
     if login:
         response['msg'] = user[2] + '登陆成功！'
     else:
@@ -151,6 +158,99 @@ def get_student_data():
         print(s)
         response['info'] = s  # 把结果保存在response里面
     return json.dumps(response)  # 将response从字典格式转化为json格式反馈给前端
+
+
+# 小锦写的
+
+@app.route('/api/get_history_courses', methods=['POST'])
+def get_history_courses():
+    """
+    获取某个学生的已选课程
+    """
+    request_data = request.json
+    response = {'ok': True}
+    cursor = db.cursor()
+    if session.get('user'):
+        sql = 'select * from c where cno in (select sc.cno from sc where sc.SNO="%s" and sc.GRADE=-1)' % session.get(
+            'user')
+        print(sql)
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        print(data)
+        response['history_courses'] = data
+    else:
+        response['ok'] = False
+    return json.dumps(response)
+
+
+@app.route('/api/get_HistoryScore', methods=['POST'])
+def get_HistoryScore():
+    """
+    获取某个学生的已选课程的成绩
+    """
+    request_data = request.json
+    response = {'ok': True}
+    cursor = db.cursor()
+    if session.get('user'):
+        sql = "SELECT sc.CNO,c.CNAME,sc.GRADE FROM sc,c,s WHERE sc.CNO=c.CNO AND sc.SNO=s.SNO AND s.SNO='%s'" % session.get(
+            'user')
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        print(data)
+        response['HistoryScore'] = data
+    else:
+        response['ok'] = False
+    return json.dumps(response)
+
+
+@app.route('/api/add_corses', methods=['POST'])
+def add_corses():
+    print('到我了')
+    request_data = request.json
+
+    cno = request_data['cno']
+    print(cno)
+    cursor = db.cursor()
+    response = {'ok': True}
+    sql = "INSERT INTO sc(SNO,CNO,GRADE) VALUES ('%s','%s',-1)" % (session.get('user'), cno)
+    # sql = "INSERT INTO sc(SNO,CNO,GRADE) VALUES ('%s',cno,-1)" % session.get('user')
+    try:
+        # print('是我是我')
+        cursor.execute(sql)
+        db.commit()
+        results = cursor.fetchall()
+        print(results)
+    except:
+        # print('那就是我')
+        db.rollback()
+    return json.dumps(response)
+
+
+@app.route('/api/delete_courses', methods=['POST'])
+def delete_courses():
+    print('到我了')
+    request_data = request.json
+
+    cno = request_data['cno']
+    print(cno)
+    cursor = db.cursor()
+    response = {'ok': True}
+    # sql="SELECT CNO FROM sc WHERE SNO='%s' " % session.get('user')
+    # cursor.execute(sql)
+    # db.commit()
+    # results = cursor.fetchall()
+    # print(results)
+    sql = " DELETE FROM sc WHERE SNO='%s' and CNO='%s' " % (session.get('user'), cno)
+    try:
+
+        cursor.execute(sql)
+        db.commit()
+        results = cursor.fetchall()
+        print(results)
+    except:
+
+        db.rollback()
+    return json.dumps(response)
 
 
 # 教师端=====================================================
@@ -229,6 +329,126 @@ def save_score():
     # sql = ''
     # cursor.execute(sql)
     return json.dumps(response)
+
+
+@app.route('/api/save', methods=['POST'])
+def save():
+    request_data = request.json
+    response = {'ok': True}
+    data = request_data['data']
+    cursor = db.cursor()
+    if request_data['what'] == 'student':
+        table = 's'
+        no = 'sno'
+        NO = 'SNO'
+    else:
+        table = 'c'
+        no = 'cno'
+        NO = 'CNO'
+    for i in range(len(data)):
+        sets = ''
+        for d in data[i].items():
+            if d[0] == 'credit':
+                sets += "%s=%s," % (d[0], d[1])
+            else:
+                sets += "%s='%s'," % (d[0], d[1])
+        sets = sets[:-1]
+        sql = "update %s set %s where %s='%s'" % (table, sets, NO, data[i][no])
+        try:
+            cursor.execute(sql)
+            db.commit()
+        except:
+            db.rollback()
+            response['ok'] = False
+            response['errmsg'] = '数据库更新失败'
+            print('sql执行失败')
+
+    return json.dumps(response)
+
+
+@app.route('/api/new', methods=['POST'])
+def new():
+    request_data = request.json
+    response = {'ok': True}
+    data = request_data['data']
+    print(data)
+    cursor = db.cursor()
+    if request_data['what'] == 'student':
+        table = 's'
+        no = 'sno'
+        NO = 'SNO,SNAME,SEX,AGE,SDEPT,LOGN,PSWD'
+    else:
+        table = 'c'
+        no = 'cno'
+        NO = 'CNO,CNAME,CREDIT,CDEPT,TNAME'
+    print(str(tuple(data.values())))
+    sql = "insert into %s(%s) values%s" % (table, NO, str(tuple(data.values())))
+    print(sql)
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except:
+        db.rollback()
+        response['ok'] = False
+        response['errmsg'] = '增加数据失败'
+        print('sql执行失败')
+
+    return json.dumps(response)
+
+
+@app.route('/api/del', methods=['POST'])
+def del_data():
+    request_data = request.json
+    response = {'ok': True}
+    data = request_data['data']
+    print(data)
+    cursor = db.cursor()
+    if request_data['what'] == 'student':
+        table = 's'
+        no = 'sno'
+        NO = 'SNO'
+    else:
+        table = 'c'
+        no = 'cno'
+        NO = 'CNO'
+    for i in data:
+        sql = "delete from %s where %s='%s'" % (table, NO, i)
+        try:
+            cursor.execute(sql)
+            db.commit()
+        except:
+            db.rollback()
+            response['ok'] = False
+            response['errmsg'] = '增加数据失败'
+            print('sql执行失败')
+
+    return json.dumps(response)
+
+
+# 任天丽写的
+@app.route('/api/echarts', methods=['POST'])
+def echarts_data():
+    # 获取课程名称
+    cursor = db.cursor()
+    cname = []
+    sql = "SELECT cname  from c where cno in (select cno from sc);"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    for row in results:
+        cname.append(row[0])
+
+    # 获取平均成绩
+    grade = []
+    sql = "SELECT AVG(GRADE) from sc where GRADE>0 group by cno ;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    for row in results:
+        grade.append(float(row[0]))
+    jsondata = {
+        "key": cname,
+        "value": grade
+    }
+    return json.dumps(jsondata)
 
 
 if __name__ == '__main__':

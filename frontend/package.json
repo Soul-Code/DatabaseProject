@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "echarts": "^4.1.0",
     "element-ui": "^2.4.11",
     "vue": "^2.5.2",
+    "vue-echarts": "^4.0.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
