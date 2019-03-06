@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8143973a-344b-4946-a51c-bee56543ecfb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/teacher.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/teacher.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,14 +121,14 @@
     <session id="661395588">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -149,12 +147,12 @@
         <counts>
           <entry key="Python Console" value="58" />
           <entry key="cell_2" value="3" />
-          <entry key="py" value="1985" />
+          <entry key="py" value="1986" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2042" />
+          <entry key="Python" value="2043" />
           <entry key="SQL" value="1" />
           <entry key="Scratch" value="3" />
         </counts>
@@ -166,8 +164,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="442" column="23" lean-forward="true" selection-start-line="442" selection-start-column="23" selection-end-line="442" selection-end-column="23" />
+            <state relative-caret-position="158">
+              <caret line="428" column="24" selection-start-line="428" selection-start-column="12" selection-end-line="428" selection-end-column="24" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <marker date="1551807672703" expanded="true" signature="8629:11010" ph="..." />
@@ -214,10 +212,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="193" />
-    <option name="y" value="162" />
-    <option name="width" value="1381" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="192" />
+    <option name="y" value="161" />
+    <option name="width" value="1382" />
     <option name="height" value="880" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -225,7 +223,20 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
@@ -337,15 +348,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="887" y="249" width="1381" height="880" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13672923" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1380697" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49787235" visible="true" weight="0.3704698" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49787235" weight="0.19109663" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -361,7 +372,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32962963" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.23921272" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.16823056" />
       <window_info anchor="right" id="SciView" order="5" weight="0.32945737" />
     </layout>
     <layout-to-restore>
@@ -426,13 +437,6 @@
     <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="das://51c2ac4b-a4dd-4a1d-8ee3-7af3b453a320/schema/course_selection_system/table/sc">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://51c2ac4b-a4dd-4a1d-8ee3-7af3b453a320/schema/course_selection_system/table/s">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -463,13 +467,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="442" column="23" lean-forward="true" selection-start-line="442" selection-start-column="23" selection-end-line="442" selection-end-column="23" />
+        <state relative-caret-position="158">
+          <caret line="428" column="24" selection-start-line="428" selection-start-column="12" selection-end-line="428" selection-end-column="24" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <marker date="1551807672703" expanded="true" signature="8629:11010" ph="..." />
             <marker date="1551807672703" expanded="true" signature="11029:11574" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://51c2ac4b-a4dd-4a1d-8ee3-7af3b453a320/schema/course_selection_system/table/sc">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
